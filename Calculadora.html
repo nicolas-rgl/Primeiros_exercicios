@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+    input{
+        margin-top: 10pt;
+        width: 70px;
+    }
+    div#res{
+        margin-top: 25px;
+        font: normal 35px arial;
+        background: rgb(116, 116, 219);
+        color: white;
+        width: 200px;
+        height: 70px;
+        text-align: center;
+        line-height: 70px;
+    }
+
+    
+    </style>
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <Div>Selecione a operação: </Div>
+
+    <input id="bt1" type="button" value="Soma" onclick="operacao('soma')"> ou
+    <input id="bt2" type="button" value="Subtração" onclick="operacao('subtracao')">
+    <br>
+    <input type="number" name="nmb1" id="nmb1"> +/-
+    <input type="number" name="nmb2" id="nmb2">
+    <input type="button" value="calcule" id="calcule">
+    <div id="res">Resultado </div>    
+    
+    <script>
+
+        function operacao(op) {
+            localStorage.setItem("operacao", op);
+        }
+
+
+        document.getElementById("calcule").addEventListener("click", function() {
+            const oper = localStorage.getItem("operacao");
+            var valor1 = Number(document.getElementById("nmb1").value);
+            var valor2 = Number(document.getElementById("nmb2").value);
+            let resultado = 0
+            if (oper == "soma"){
+
+                resultado = valor1 + valor2;
+                
+            }
+            else {
+                
+                resultado = valor1 - valor2;
+            }
+            document.getElementById("res").innerHTML = resultado;
+        })
+
+    </script>
+    
+
+
+</body>
+</html>
